@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Vlad-Hash25/HTTPVoid/issues"
   },
-  "homepage": "https://github.com/Vlad-Hash25/HTTPVoid#readme"
+  "homepage": "https://github.com/Vlad-Hash25/HTTPVoid#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
