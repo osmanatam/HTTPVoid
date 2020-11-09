@@ -1,7 +1,7 @@
 {
   "name": "httpvoid",
   "version": "0.0.1-0",
-  "description": "A basic HTTP server written in Javascript using Node and Express.",
+  "description": "A basic HTTP server written in Javascript using Node.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,5 @@
     "url": "https://github.com/Vlad-Hash25/HTTPVoid/issues"
   },
   "homepage": "https://github.com/Vlad-Hash25/HTTPVoid#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "dependencies": {}
 }
