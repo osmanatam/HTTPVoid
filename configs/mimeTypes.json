@@ -1,0 +1,12 @@
+{
+    "mimeTypes" :   {
+        ".html" :   "text/html",
+        ".htm"  :   "text/html",
+        ".css"  :   "text/css",
+        ".txt"  :   "text/plain",
+        ".md"   :   "text/plain",
+        ".js"   :   "text/javascript",
+        ".json" :   "application/json",
+        ".ico"  :   "image/vnd.microsoft.icon"
+    }
+}
