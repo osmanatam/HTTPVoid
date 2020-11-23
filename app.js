@@ -1,7 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const config = require('./config.json');
+const config = require('./configs/config.json');
+const mimeTypes = require('./configs/mimeTypes.json');
+const { nextTick } = require('process');
 
 // Create server object w/ request & response arg fields.
 const server = http.createServer((req, res) => {});
@@ -17,41 +19,42 @@ server.on('request', (req, res) => {
         // On a file reading error, send a 404 and end response.
         if(err) 
         {
+            // Log request url, log 404 (not found).
+            console.log(`Requested : ${req.url}\nStatus    : 404\n`)
             res.statusCode = 404;
             res.end();
+            return;
         };
+
         res.writeHead(200, {
             // Return character encoding and content type. Content-type is taken from `getMimeType()` function. 
             'Content-Encoding': 'identity',
             'Content-Type': getMimeType(path.extname(req.url))
         });
+        // Log request url, log 200 (OK), log mimetype.
+        console.log(`Requested : ${req.url}\nStatus    : 200\nType      : ${getMimeType(path.extname(req.url))}\n`)
         res.end(data);
     });
+
+    // Add a log breakline indicating end of transaction.
+    for(i = 1; i <= config.logBreakLineLen; i++) {
+        process.stdout.write('-');
+    }
+    console.log('\n');
+    
 });
 
 // Listen on port 80, log occurance.
 server.listen(config.port, config.hostname, () => {
-    console.log(`Server listening on http://${config.hostname}:${config.port}/`);
+    console.log(`Server listening on http://${config.hostname}:${config.port}/\n`);
 });
 
-// When a file's extension is parsed, returns a content-type. Defaults to text/plain if not found.
-// TODO : Set known mimetypes in `config.json` for automatic usage later.
-function getMimeType(extension) {
-    switch(extension) {
-        case '.html':
-            return('text/html');
-            break;
-        
-        case '.css':
-            return('text/css');
-            break;
-
-        case '.json':
-            return('application/json');
-            break;
-
-        default:
-            return('text/plain');
-            break;
+// On entering of a file extension, will check known mimeTypes and return appropriate mimeType, if known. Else, if not known, will return default.
+function getMimeType(ext) {
+    for(i = 0; i < mimeTypes.length; i++) {
+        if(ext === mimeTypes[i].ext) {
+            return mimeTypes[i].typ;
+        }
     }
+    return 'application/ocet-stream';
 }
