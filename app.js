@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const config = require('./configs/config.json');
 const mimeTypes = require('./configs/mimeTypes.json');
-const { nextTick } = require('process');
 
 // Create server object w/ request & response arg fields.
 const server = http.createServer((req, res) => {});
