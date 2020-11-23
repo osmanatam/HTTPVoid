@@ -1,12 +1,36 @@
-{
-    "mimeTypes" :   {
-        ".html" :   "text/html",
-        ".htm"  :   "text/html",
-        ".css"  :   "text/css",
-        ".txt"  :   "text/plain",
-        ".md"   :   "text/plain",
-        ".js"   :   "text/javascript",
-        ".json" :   "application/json",
-        ".ico"  :   "image/vnd.microsoft.icon"
-    }
-}
+[
+  {
+    "ext"   :   ".html",
+    "typ"   :   "text/html"
+  },
+
+  {
+    "ext"   :   ".css",
+    "typ"   :   "text/css"
+  },
+
+  {
+    "ext"   :   ".txt",
+    "typ"   :   "text/plain"
+  },
+
+  {
+    "ext"   :   ".js",
+    "typ"   :   "text/javascript"
+  },
+
+  {
+    "ext"   :   ".json",
+    "typ"   :   "application/json"
+  },
+
+  {
+    "ext"   :   ".ico",
+    "typ"   :   "image/x-icon"
+  },
+
+  {
+    "ext"   :   ".png",
+    "typ"   :   "image/png"
+  }
+]
