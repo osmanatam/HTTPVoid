@@ -40,7 +40,6 @@ server.on('request', (req, res) => {
         process.stdout.write('-');
     }
     console.log('\n');
-    
 });
 
 // Listen on port 80, log occurance.
@@ -48,12 +47,12 @@ server.listen(config.port, config.hostname, () => {
     console.log(`Server listening on http://${config.hostname}:${config.port}/\n`);
 });
 
-// On entering of a file extension, will check known mimeTypes and return appropriate mimeType, if known. Else, if not known, will return default.
+// Upon entrance of (a) file extension, will check known mimeTypes and return appropriate mimeType if known. Else, will return default mimeType located in config.json.
 function getMimeType(ext) {
     for(i = 0; i < mimeTypes.length; i++) {
         if(ext === mimeTypes[i].ext) {
             return mimeTypes[i].typ;
         }
     }
-    return 'application/ocet-stream';
+    return config.defaultMimeType;
 }
