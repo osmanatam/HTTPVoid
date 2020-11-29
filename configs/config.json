@@ -7,5 +7,5 @@
     
     "defaultMimeType"   : "application/ocet-stream",
 
-    "rootIndex"         : "files/pages/index.html"
+    "sitemap"           : "sitemap.xml"
 }
