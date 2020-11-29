@@ -14,12 +14,12 @@ server.on('request', (req, res) => {
         req.url = '/index.html';
     };
 
-    fs.readFile('./files'+req.url, (err, data) => {
+    fs.readFile(config.root+req.url, (err, data) => {
         // On a file reading error, send a 404 and end response.
         if(err) 
         {
             // Log request url, log 404 (not found).
-            console.log(`Requested : ${req.url}\nStatus    : 404\n`)
+            process.stdout.write(`Get    : ${path.normalize(config.root+req.url)}\nStatus : 404\nType   : ${getMimeType(path.extname(req.url))}\n\n`);
             res.statusCode = 404;
             res.end();
             return;
@@ -31,7 +31,7 @@ server.on('request', (req, res) => {
             'Content-Type': getMimeType(path.extname(req.url))
         });
         // Log request url, log 200 (OK), log mimetype.
-        console.log(`Requested : ${req.url}\nStatus    : 200\nType      : ${getMimeType(path.extname(req.url))}\n`)
+        process.stdout.write(`Get    : ${path.normalize(config.root+req.url)}\nStatus : 200\nType   : ${getMimeType(path.extname(req.url))}\n\n`);
         res.end(data);
     });
 
@@ -39,7 +39,7 @@ server.on('request', (req, res) => {
     for(i = 1; i <= config.logBreakLineLen; i++) {
         process.stdout.write('-');
     }
-    console.log('\n');
+    process.stdout.write('\n\n');
 });
 
 // Listen on port 80, log occurance.
@@ -47,7 +47,8 @@ server.listen(config.port, config.hostname, () => {
     console.log(`Server listening on http://${config.hostname}:${config.port}/\n`);
 });
 
-// Upon entrance of (a) file extension, will check known mimeTypes and return appropriate mimeType if known. Else, will return default mimeType located in config.json.
+// Upon entrance of (a) file extension, will check known mimeTypes and return appropriate mimeType if known. 
+// Else, will return default mimeType located in config.json.
 function getMimeType(ext) {
     for(i = 0; i < mimeTypes.length; i++) {
         if(ext === mimeTypes[i].ext) {
