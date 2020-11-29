@@ -2,5 +2,5 @@
 <files>
     <.html>pages/</.html>
     <.css>styles/</.html>
-    <.js>scripts/</.js>
+    <text/javascript>scripts/</>
 </files>
