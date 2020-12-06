@@ -5,7 +5,5 @@
 
     "logBreakLineLen"   : 20,
     
-    "defaultMimeType"   : "application/ocet-stream",
-
-    "sitemap"           : "sitemap.xml"
+    "defaultMimeType"   : "application/ocet-stream"
 }
